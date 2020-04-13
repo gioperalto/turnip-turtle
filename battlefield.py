@@ -2,7 +2,7 @@ from turnip_turtle import TurnipTurtle
 import turtle
 
 def collision(a, b):
-  return abs(a.xcor() - b.xcor()) < 10 and abs(a.ycor() - b.ycor()) < 10
+  return abs(a.xcor() - b.xcor()) < 25 and abs(a.ycor() - b.ycor()) < 25
 
 if __name__ == "__main__":
   space, turnip = turtle.Screen(), turtle.Turtle()
