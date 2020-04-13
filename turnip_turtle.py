@@ -2,7 +2,8 @@ import numpy as np
 
 class TurnipTurtle:
     def __init__(self, turtle, turnip, name, screensize):
-        self.name, self.step, self.direction = name, 30, 90
+        self.name, self.chaos_counter, self.counter = name, 5, 0
+        self.step, self.direction = 30, 90
         self.colors = ['red', 'orange', 'green', 'blue', 'purple', 'black']
         self.width, self.height = screensize
         self.x, self.y  = self.random_spot(self.width), self.height,
@@ -19,10 +20,16 @@ class TurnipTurtle:
         return np.random.randint(axis_length)
 
     def random_turn(self):
-        self.turtle.setheading(self.direction+np.random.randint(-self.step,self.step))
+        new_direction = self.direction+np.random.randint(-self.step,self.step)
+        self.turtle.setheading(new_direction)
+        self.counter += 1
+        if self.counter % self.chaos_counter == 0:
+            self.direction = new_direction
 
     def face_turnip(self):
-        self.turtle.setheading(self.turtle.towards(self.turnip))
+        new_direction = self.turtle.towards(self.turnip)
+        self.direction = new_direction
+        self.turtle.setheading(new_direction)
 
     def move(self):
         step = np.random.randint(self.step)
@@ -30,7 +37,7 @@ class TurnipTurtle:
         if self.turtle.ycor() >= self.height or self.turtle.ycor() <= -self.height or \
             self.turtle.xcor() <= -self.width or self.turtle.xcor() >= self.width:
             self.face_turnip()
-            self.turtle.forward(step)
+            self.turtle.forward(self.step)
         else:
             self.turtle.forward(step)
 
