@@ -11,7 +11,7 @@ This program runs a turtle race with all of the players you enter into the playe
 3. To run the program: 
     - `python battlefield.py`           (creates program with default image)
     - `python battlefield.py turnip`    (creates program with turnip image)
-    - `python battlefield.py bells`     (will create program with default image)
+    - `python battlefield.py bells`     (will create program with Bells image)
 
 ## To change the players:
 - There is a `players.txt` file where you can change out the names
